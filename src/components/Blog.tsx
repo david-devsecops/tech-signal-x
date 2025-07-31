@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom'
+interface BlogProps {
+  onBlogClick?: (blogId: string) => void
+}
 
-const Blog = () => {
+const Blog = ({ onBlogClick }: BlogProps) => {
   const blogPosts = [
     {
       id: 'aws-migration-strategy',
@@ -52,7 +54,7 @@ const Blog = () => {
       title: 'Unix/Linux 시스템 관리 노하우 12년의 기록',
       excerpt: 'Solaris, AIX, Linux 환경에서 12년간 시스템 엔지니어로 활동하며 쌓은 트러블슈팅, 성능 튜닝, 보안 강화 경험을 정리했습니다.',
       date: '2023년 12월 15일',
-      readTime: '14부 읽기',
+      readTime: '14분 읽기',
       category: 'Unix/Linux',
       image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=400&h=200&fit=crop'
     }
@@ -87,8 +89,11 @@ const Blog = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
-            <Link to={`/blog/${post.id}`} key={index}>
-              <article className="card group hover:shadow-lg transition-shadow cursor-pointer">
+            <article 
+              key={index} 
+              className="card group hover:shadow-lg transition-shadow cursor-pointer"
+              onClick={() => onBlogClick && onBlogClick(post.id)}
+            >
               <div className="mb-4 overflow-hidden rounded-lg">
                 <img
                   src={post.image}
@@ -114,22 +119,27 @@ const Blog = () => {
               
               <div className="flex justify-between items-center text-sm text-gray-500">
                 <span>{post.date}</span>
-                <span className="flex items-center text-blue-600 hover:text-blue-800">
+                <span 
+                  className="flex items-center text-blue-600 hover:text-blue-800"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    onBlogClick && onBlogClick(post.id)
+                  }}
+                >
                   더 읽기
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </span>
               </div>
-              </article>
-            </Link>
+            </article>
           ))}
         </div>
 
         <div className="text-center mt-12">
-          <a href="/blog" className="btn-primary">
+          <button className="btn-primary opacity-50 cursor-not-allowed" disabled>
             모든 포스트 보기
-          </a>
+          </button>
         </div>
       </div>
     </section>
