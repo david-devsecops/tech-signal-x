@@ -11,7 +11,7 @@ const About = () => {
   const experience = [
     {
       company: '엘퍼스트',
-      role: '클라우드 아키텍트 (차장)',
+      role: '클라우드 아키텍트',
       period: '2024.09 - 재직중',
       description: '한국은행 CBDC 활용성 테스트 인프라 구축 및 프리랜서 활동'
     },
@@ -23,13 +23,13 @@ const About = () => {
     },
     {
       company: '그리드',
-      role: 'DevOps 차장 팀장',
+      role: 'DevOps 엔지니어',
       period: '2022.01 - 2023.01',
       description: 'MOIM 메타버스 플랫폼 DevOps 및 다양한 클라우드 인프라 구축'
     },
     {
       company: '아이와이씨앤씨',
-      role: '소프트웨어 개발자',
+      role: '유닉스 엔지니어',
       period: '2018.12 - 2021.09',
       description: '국방통합데이터센터 오라클 하드웨어 유지보수'
     }
@@ -77,26 +77,38 @@ const About = () => {
 
           <div className="card">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">자격증</h3>
-            <div className="space-y-4">
+            <div className="space-y-3 max-h-80 overflow-y-auto">
               <div className="border-l-4 border-green-500 pl-4">
-                <h4 className="font-semibold text-gray-900">AWS Solution Architect Associate</h4>
-                <p className="text-sm text-gray-500">2023.05</p>
+                <h4 className="font-semibold text-gray-900 text-sm">AWS Solution Architect Associate</h4>
+                <p className="text-xs text-gray-500">2023.05</p>
               </div>
               <div className="border-l-4 border-green-500 pl-4">
-                <h4 className="font-semibold text-gray-900">AWS Database Specialty</h4>
-                <p className="text-sm text-gray-500">2023.04</p>
+                <h4 className="font-semibold text-gray-900 text-sm">AWS Database Specialty</h4>
+                <p className="text-xs text-gray-500">2023.04</p>
               </div>
-              <div className="border-l-4 border-green-500 pl-4">
-                <h4 className="font-semibold text-gray-900">Google Cloud Professional Cloud Architect</h4>
-                <p className="text-sm text-gray-500">2020.09</p>
+              <div className="border-l-4 border-blue-500 pl-4">
+                <h4 className="font-semibold text-gray-900 text-sm">Google Cloud Professional Cloud Architect</h4>
+                <p className="text-xs text-gray-500">2020.09</p>
               </div>
-              <div className="border-l-4 border-green-500 pl-4">
-                <h4 className="font-semibold text-gray-900">Oracle Cloud Infrastructure Architect Associate</h4>
-                <p className="text-sm text-gray-500">2019.04</p>
+              <div className="border-l-4 border-orange-500 pl-4">
+                <h4 className="font-semibold text-gray-900 text-sm">Oracle Cloud Infrastructure 2018 Architect Associate</h4>
+                <p className="text-xs text-gray-500">2019.04</p>
               </div>
-              <div className="border-l-4 border-green-500 pl-4">
-                <h4 className="font-semibold text-gray-900">Oracle Certified Professional (OCP)</h4>
-                <p className="text-sm text-gray-500">2010.05</p>
+              <div className="border-l-4 border-orange-500 pl-4">
+                <h4 className="font-semibold text-gray-900 text-sm">Oracle Certified Professional (OCP)</h4>
+                <p className="text-xs text-gray-500">2010.05</p>
+              </div>
+              <div className="border-l-4 border-purple-500 pl-4">
+                <h4 className="font-semibold text-gray-900 text-sm">Sun Certified System Administrator (SCSECA)</h4>
+                <p className="text-xs text-gray-500">2009.08</p>
+              </div>
+              <div className="border-l-4 border-purple-500 pl-4">
+                <h4 className="font-semibold text-gray-900 text-sm">Sun Certified Network Administrator (SCNA)</h4>
+                <p className="text-xs text-gray-500">2009.07</p>
+              </div>
+              <div className="border-l-4 border-purple-500 pl-4">
+                <h4 className="font-semibold text-gray-900 text-sm">Certified Solaris Administrator (CSA)</h4>
+                <p className="text-xs text-gray-500">2009.06</p>
               </div>
             </div>
           </div>
