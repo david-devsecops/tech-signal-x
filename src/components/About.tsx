@@ -1,29 +1,37 @@
 
 const About = () => {
   const skills = [
-    'JavaScript/TypeScript', 'React', 'Node.js', 'Python',
-    'AWS', 'Docker', 'PostgreSQL', 'MongoDB',
-    'Git', 'CI/CD', 'Kubernetes', 'GraphQL'
+    'AWS', 'Azure', 'GCP', 'Oracle Cloud',
+    'Kubernetes', 'Docker', 'Terraform', 'Jenkins',
+    'Linux', 'Unix', 'Nginx', 'GitLab CI/CD',
+    'Oracle Database', 'PostgreSQL', 'MongoDB', 'Redis',
+    'Python', 'Bash', 'ChatGPT', 'Cursor'
   ]
 
   const experience = [
     {
-      company: '테크 스타트업',
-      role: 'Senior Frontend Developer',
-      period: '2021 - Present',
-      description: 'React 기반 웹 애플리케이션 개발 및 팀 리딩'
+      company: '엘퍼스트',
+      role: '클라우드 아키텍트 (차장)',
+      period: '2024.09 - 재직중',
+      description: '한국은행 CBDC 활용성 테스트 인프라 구축 및 프리랜서 활동'
     },
     {
-      company: '중견 IT 기업',
-      role: 'Full Stack Developer',
-      period: '2019 - 2021',
-      description: 'Node.js와 React를 활용한 풀스택 개발'
+      company: '우나프론트',
+      role: '솔루션 아키텍트',
+      period: '2023.01 - 2025.04',
+      description: '아모레퍼시픽 On-Premise to AWS Migration SA Role 및 AWS 운영'
     },
     {
-      company: '스타트업',
-      role: 'Junior Developer',
-      period: '2018 - 2019',
-      description: '웹 개발 기초 학습 및 프로젝트 참여'
+      company: '그리드',
+      role: 'DevOps 차장 팀장',
+      period: '2022.01 - 2023.01',
+      description: 'MOIM 메타버스 플랫폼 DevOps 및 다양한 클라우드 인프라 구축'
+    },
+    {
+      company: '아이와이씨앤씨',
+      role: '소프트웨어 개발자',
+      period: '2018.12 - 2021.09',
+      description: '국방통합데이터센터 오라클 하드웨어 유지보수'
     }
   ]
 
@@ -33,12 +41,12 @@ const About = () => {
         <div className="text-center mb-16">
           <h2 className="section-title">About Me</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            5년간의 개발 경험을 바탕으로 사용자 중심의 웹 애플리케이션을 만들고 있습니다.
-            지속적인 학습과 기술 공유를 통해 개발 커뮤니티에 기여하고자 합니다.
+            12년 9개월의 클라우드 엔지니어 경험을 바탕으로 AWS, Azure, GCP 등 멀티클라우드 환경에서 인프라를 설계하고 구축합니다.<br/>
+            오라클 데이터베이스부터 쿠버네티스까지, 다양한 기술 스택을 활용하여 안정적이고 확장 가능한 시스템을 구축합니다.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
           <div className="card">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">기술 스택</h3>
             <div className="flex flex-wrap gap-2">
@@ -61,9 +69,35 @@ const About = () => {
                   <h4 className="font-semibold text-gray-900">{exp.role}</h4>
                   <p className="text-blue-600 font-medium">{exp.company}</p>
                   <p className="text-sm text-gray-500 mb-1">{exp.period}</p>
-                  <p className="text-gray-600">{exp.description}</p>
+                  <p className="text-gray-600 text-sm">{exp.description}</p>
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="card">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">자격증</h3>
+            <div className="space-y-4">
+              <div className="border-l-4 border-green-500 pl-4">
+                <h4 className="font-semibold text-gray-900">AWS Solution Architect Associate</h4>
+                <p className="text-sm text-gray-500">2023.05</p>
+              </div>
+              <div className="border-l-4 border-green-500 pl-4">
+                <h4 className="font-semibold text-gray-900">AWS Database Specialty</h4>
+                <p className="text-sm text-gray-500">2023.04</p>
+              </div>
+              <div className="border-l-4 border-green-500 pl-4">
+                <h4 className="font-semibold text-gray-900">Google Cloud Professional Cloud Architect</h4>
+                <p className="text-sm text-gray-500">2020.09</p>
+              </div>
+              <div className="border-l-4 border-green-500 pl-4">
+                <h4 className="font-semibold text-gray-900">Oracle Cloud Infrastructure Architect Associate</h4>
+                <p className="text-sm text-gray-500">2019.04</p>
+              </div>
+              <div className="border-l-4 border-green-500 pl-4">
+                <h4 className="font-semibold text-gray-900">Oracle Certified Professional (OCP)</h4>
+                <p className="text-sm text-gray-500">2010.05</p>
+              </div>
             </div>
           </div>
         </div>
