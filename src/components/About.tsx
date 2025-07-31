@@ -35,25 +35,25 @@ const About = () => {
     },
     {
       company: '화인S&C',
-      role: '서버 구축 엔지니어',
+      role: '유닉스 엔지니어',
       period: '2016.09 - 2017.12',
-      description: '국방통합데이터센터 오라클 하드웨어 유지보수'
+      description: '금호그룹 TORE 수행, Oracle RAC ASM 구축, 삼육대 학과신청시스템 튜닝'
     },
     {
       company: '테크데이타',
-      role: '데이터 관리 엔지니어',
+      role: 'Oracle 엔지니어',
       period: '2015.01 - 2015.12',
       description: '외환선물 전산 시스템 이전 및 데이터 관리'
     },
     {
       company: '해오름기술',
-      role: '시스템 엔지니어',
+      role: '유닉스 엔지니어',
       period: '2013.08 - 2014.11',
-      description: '외환선물 시스템 Migration, DR 시스템 구축, EMC 스토리지 Migration'
+      description: '외환선물 시스템 Migration (SF4800 - T5-2), DR 시스템 구축, EMC 스토리지 Migration'
     },
     {
       company: '쌍용정보기술',
-      role: '서버 관리자, Oracle 엔지니어',
+      role: '유닉스 엔지니어',
       period: '2010.12 - 2013.08',
       description: '해군 C4I 체계 (KNCCS 기술 PL), Oracle 10g Single/RAC Maintenance, Sun 서버 관리'
     }
