@@ -12,12 +12,12 @@ const About = () => {
     {
       company: '엘퍼스트',
       role: '클라우드 아키텍트',
-      period: '2024.09 - 재직중',
-      description: '한국은행 CBDC 활용성 테스트 인프라 구축 및 프리랜서 활동'
+      period: '2024.09 - 현재',
+      description: '한국은행 CBDC 활용성 테스트 인프라 구축 (2024.08 ~ 2025.07)'
     },
     {
       company: '우나프론트',
-      role: '솔루션 아키텍트',
+      role: '솔루션스 아키텍트, 클라우드 아키텍트',
       period: '2023.01 - 2025.04',
       description: '아모레퍼시픽 On-Premise to AWS Migration SA Role 및 AWS 운영'
     },
@@ -25,13 +25,37 @@ const About = () => {
       company: '그리드',
       role: 'DevOps 엔지니어',
       period: '2022.01 - 2023.01',
-      description: 'MOIM 메타버스 플랫폼 DevOps 및 다양한 클라우드 인프라 구축'
+      description: 'MOIM 메타버스 플랫폼 DevOps, SKT Tdeal 인프라 구축, SK그룹 프로젝트'
     },
     {
-      company: '아이와이씨앤씨',
+      company: '아이와이씨앤씨(주)',
       role: '유닉스 엔지니어',
       period: '2018.12 - 2021.09',
+      description: '국방통합데이터센터 오라클 하드웨어 유지보수, Oracle ZDLRA 구축'
+    },
+    {
+      company: '화인S&C',
+      role: '서버 구축 엔지니어',
+      period: '2016.09 - 2017.12',
       description: '국방통합데이터센터 오라클 하드웨어 유지보수'
+    },
+    {
+      company: '테크데이타',
+      role: '데이터 관리 엔지니어',
+      period: '2015.01 - 2015.12',
+      description: '외환선물 전산 시스템 이전 및 데이터 관리'
+    },
+    {
+      company: '해오름기술',
+      role: '시스템 엔지니어',
+      period: '2013.08 - 2014.11',
+      description: '외환선물 시스템 Migration, DR 시스템 구축, EMC 스토리지 Migration'
+    },
+    {
+      company: '쌍용정보기술',
+      role: '서버 관리자, Oracle 엔지니어',
+      period: '2010.12 - 2013.08',
+      description: '해군 C4I 체계 (KNCCS 기술 PL), Oracle 10g Single/RAC Maintenance, Sun 서버 관리'
     }
   ]
 
@@ -63,13 +87,13 @@ const About = () => {
 
           <div className="card">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">경력 사항</h3>
-            <div className="space-y-6">
+            <div className="space-y-4 max-h-80 overflow-y-auto">
               {experience.map((exp, index) => (
                 <div key={index} className="border-l-4 border-blue-500 pl-4">
-                  <h4 className="font-semibold text-gray-900">{exp.role}</h4>
-                  <p className="text-blue-600 font-medium">{exp.company}</p>
-                  <p className="text-sm text-gray-500 mb-1">{exp.period}</p>
-                  <p className="text-gray-600 text-sm">{exp.description}</p>
+                  <h4 className="font-semibold text-gray-900 text-sm">{exp.role}</h4>
+                  <p className="text-blue-600 font-medium text-sm">{exp.company}</p>
+                  <p className="text-xs text-gray-500 mb-1">{exp.period}</p>
+                  <p className="text-gray-600 text-xs">{exp.description}</p>
                 </div>
               ))}
             </div>
