@@ -1,57 +1,64 @@
+import { Link } from 'react-router-dom'
 
 const Blog = () => {
   const blogPosts = [
     {
-      title: 'React 18의 새로운 기능들',
-      excerpt: 'Concurrent Rendering, Automatic Batching, Suspense 등 React 18의 주요 업데이트를 살펴봅니다.',
+      id: 'aws-migration-strategy',
+      title: 'On-Premise에서 AWS로의 대규모 마이그레이션 전략',
+      excerpt: '아모레퍼시픽 프로젝트를 통해 배운 대규모 엔터프라이즈의 AWS 마이그레이션 경험과 전략을 공유합니다.',
       date: '2024년 1월 15일',
-      readTime: '5분 읽기',
-      category: 'React',
-      image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=200&fit=crop'
-    },
-    {
-      title: 'TypeScript로 더 안전한 코드 작성하기',
-      excerpt: '타입스크립트의 고급 기능을 활용하여 런타임 에러를 줄이고 개발 생산성을 높이는 방법을 알아봅니다.',
-      date: '2024년 1월 10일',
-      readTime: '7분 읽기',
-      category: 'TypeScript',
-      image: 'https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?w=400&h=200&fit=crop'
-    },
-    {
-      title: 'Node.js 성능 최적화 팁',
-      excerpt: '메모리 사용량 줄이기, 비동기 처리 최적화, 캐싱 전략 등 Node.js 애플리케이션의 성능을 향상시키는 방법들을 정리했습니다.',
-      date: '2024년 1월 5일',
-      readTime: '8분 읽기',
-      category: 'Node.js',
-      image: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&h=200&fit=crop'
-    },
-    {
-      title: 'AWS로 서버리스 아키텍처 구축하기',
-      excerpt: 'Lambda, API Gateway, DynamoDB를 활용한 완전한 서버리스 웹 애플리케이션 구축 과정을 단계별로 설명합니다.',
-      date: '2023년 12월 28일',
-      readTime: '10분 읽기',
+      readTime: '12분 읽기',
       category: 'AWS',
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=200&fit=crop'
     },
     {
-      title: 'Git 워크플로우 최적화',
-      excerpt: '팀 개발에서 효율적인 Git 브랜칭 전략과 코드 리뷰 프로세스를 통해 협업 품질을 높이는 방법을 소개합니다.',
-      date: '2023년 12월 20일',
-      readTime: '6분 읽기',
-      category: 'Git',
-      image: 'https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=400&h=200&fit=crop'
+      id: 'oracle-zdlra-architecture',
+      title: 'Oracle ZDLRA 구축과 운영 노하우',
+      excerpt: '국민연금, KB카드 등 대형 금융기관에서 Oracle Zero Data Loss Recovery Appliance를 구축하고 운영한 경험을 나눅니다.',
+      date: '2024년 1월 10일',
+      readTime: '15분 읽기',
+      category: 'Oracle',
+      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=200&fit=crop'
     },
     {
-      title: 'Docker로 개발 환경 표준화하기',
-      excerpt: 'Docker와 Docker Compose를 활용하여 팀 전체가 동일한 개발 환경에서 작업할 수 있는 환경을 구축하는 방법을 알아봅니다.',
-      date: '2023년 12월 15일',
-      readTime: '9분 읽기',
+      id: 'kubernetes-production-guide',
+      title: '프로덕션 Kubernetes 클러스터 운영 가이드',
+      excerpt: 'SKT T-deal, 메타버스 플랫폼 등에서 Kubernetes를 운영하며 얻은 실전 경험과 모니터링, 로깅 전략을 소개합니다.',
+      date: '2024년 1월 5일',
+      readTime: '10분 읽기',
+      category: 'Kubernetes',
+      image: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=400&h=200&fit=crop'
+    },
+    {
+      id: 'multi-cloud-architecture',
+      title: '멀티클라우드 아키텍처 설계 전략',
+      excerpt: 'AWS, GCP, Azure를 활용한 멀틴클라우드 환경 구축 경험과 각 클라우드의 장단점, 비용 최적화 방안을 제시합니다.',
+      date: '2023년 12월 28일',
+      readTime: '8분 읽기',
+      category: 'Cloud',
+      image: 'https://images.unsplash.com/photo-1518186233392-c232efbf2373?w=400&h=200&fit=crop'
+    },
+    {
+      id: 'terraform-iac-best-practices',
+      title: 'Terraform으로 구현하는 Infrastructure as Code',
+      excerpt: 'SKT T-deal 인프라 구축에서 Terraform을 활용한 IaC 구현 경험과 모듈화, 상태 관리, 보안 베스트 프랙티스를 소개합니다.',
+      date: '2023년 12월 20일',
+      readTime: '11분 읽기',
       category: 'DevOps',
       image: 'https://images.unsplash.com/photo-1605745341112-85968b19335b?w=400&h=200&fit=crop'
+    },
+    {
+      id: 'unix-system-administration',
+      title: 'Unix/Linux 시스템 관리 노하우 12년의 기록',
+      excerpt: 'Solaris, AIX, Linux 환경에서 12년간 시스템 엔지니어로 활동하며 쌓은 트러블슈팅, 성능 튜닝, 보안 강화 경험을 정리했습니다.',
+      date: '2023년 12월 15일',
+      readTime: '14부 읽기',
+      category: 'Unix/Linux',
+      image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=400&h=200&fit=crop'
     }
   ]
 
-  const categories = ['전체', 'React', 'TypeScript', 'Node.js', 'AWS', 'Git', 'DevOps']
+  const categories = ['전체', 'AWS', 'Oracle', 'Kubernetes', 'Cloud', 'DevOps', 'Unix/Linux']
 
   return (
     <section id="blog" className="py-20 bg-white">
@@ -80,7 +87,8 @@ const Blog = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
-            <article key={index} className="card group hover:shadow-lg transition-shadow cursor-pointer">
+            <Link to={`/blog/${post.id}`} key={index}>
+              <article className="card group hover:shadow-lg transition-shadow cursor-pointer">
               <div className="mb-4 overflow-hidden rounded-lg">
                 <img
                   src={post.image}
@@ -106,14 +114,15 @@ const Blog = () => {
               
               <div className="flex justify-between items-center text-sm text-gray-500">
                 <span>{post.date}</span>
-                <span className="flex items-center text-blue-600">
+                <span className="flex items-center text-blue-600 hover:text-blue-800">
                   더 읽기
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </span>
               </div>
-            </article>
+              </article>
+            </Link>
           ))}
         </div>
 
