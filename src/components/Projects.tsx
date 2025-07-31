@@ -3,9 +3,9 @@ const Projects = () => {
   const projects = [
     {
       title: '한국은행 CBDC 활용성 테스트',
-      description: '중앙은행 디지털 화폐(CBDC) 활용성 테스트를 위한 AWS 기반 인프라 설계 및 구축. 클라우드 네이티브 아키텍처로 고가용성 및 보안성 달성',
-      image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=400&h=200&fit=crop',
-      tech: ['AWS', 'Kubernetes', 'Terraform', 'Docker'],
+      description: '중앙은행 디지털 화폐(CBDC) 활용성 테스트를 위한 인프라 설계 및 구축. 클라우드 아키텍처로 고가용성 및 보안성 달성',
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=200&fit=crop',
+      tech: [],
       github: '',
       demo: ''
     },
@@ -80,16 +80,18 @@ const Projects = () => {
                 {project.description}
               </p>
               
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="px-2 py-1 bg-gray-200 text-gray-700 rounded text-xs font-medium"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+              {project.tech.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tech.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="px-2 py-1 bg-gray-200 text-gray-700 rounded text-xs font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
               
               <div className="flex space-x-4">
                 {project.github && (
