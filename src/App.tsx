@@ -7,6 +7,7 @@ import Blog from './components/Blog'
 import Newsletter from './components/Newsletter'
 import Footer from './components/Footer'
 import BlogPost from './components/BlogPost'
+import { LanguageProvider } from './contexts/LanguageContext'
 
 function App() {
   const [currentView, setCurrentView] = useState<'home' | string>('home')
@@ -24,24 +25,28 @@ function App() {
 
   if (currentView === 'blog-post' && selectedBlogId) {
     return (
-      <div className="min-h-screen">
-        <Header />
-        <BlogPost blogId={selectedBlogId} onBack={showHome} />
-        <Footer />
-      </div>
+      <LanguageProvider>
+        <div className="min-h-screen">
+          <Header />
+          <BlogPost blogId={selectedBlogId} onBack={showHome} />
+          <Footer />
+        </div>
+      </LanguageProvider>
     )
   }
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      <Hero />
-      <About />
-      <Projects />
-      <Blog onBlogClick={showBlogPost} />
-      <Newsletter />
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen">
+        <Header />
+        <Hero />
+        <About />
+        <Projects />
+        <Blog onBlogClick={showBlogPost} />
+        <Newsletter />
+        <Footer />
+      </div>
+    </LanguageProvider>
   )
 }
 
