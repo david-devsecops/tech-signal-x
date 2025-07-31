@@ -2,7 +2,7 @@
 import { useLanguage } from '../contexts/LanguageContext'
 
 const Header = () => {
-  const { language, setLanguage, t } = useLanguage()
+  const { language, setLanguage } = useLanguage()
 
   const toggleLanguage = () => {
     setLanguage(language === 'ko' ? 'en' : 'ko')
@@ -18,10 +18,10 @@ const Header = () => {
           
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#about" className="nav-link">{t('nav.about')}</a>
-              <a href="#projects" className="nav-link">{t('nav.projects')}</a>
-              <a href="#blog" className="nav-link">{t('nav.blog')}</a>
-              <a href="#newsletter" className="nav-link">{t('nav.newsletter')}</a>
+              <a href="#about" className="nav-link">About</a>
+              <a href="#projects" className="nav-link">Projects</a>
+              <a href="#blog" className="nav-link">Blog</a>
+              <a href="#newsletter" className="nav-link">Newsletter</a>
             </div>
           </div>
           

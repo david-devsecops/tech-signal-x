@@ -11,7 +11,7 @@ interface LanguageContextType {
 
 const translations = {
   ko: {
-    // Header
+    // Header (한국어는 영어 그대로 유지)
     'nav.about': 'About',
     'nav.projects': 'Projects', 
     'nav.blog': 'Blog',

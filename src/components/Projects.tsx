@@ -2,7 +2,7 @@
 import { useLanguage } from '../contexts/LanguageContext'
 
 const Projects = () => {
-  const { t } = useLanguage()
+  const { language } = useLanguage()
   const projects = [
     {
       title: '한국은행 CBDC 활용성 테스트',
@@ -58,9 +58,9 @@ const Projects = () => {
     <section id="projects" className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="section-title">{t('projects.title')}</h2>
+          <h2 className="section-title">Major Projects</h2>
           <p className="text-lg text-gray-600">
-            {t('projects.description')}
+            {language === 'ko' ? '클라우드 아키텍트로서 수행한 주요 프로젝트들입니다' : 'Key projects performed as a cloud architect'}
           </p>
         </div>
 
@@ -121,7 +121,7 @@ const Projects = () => {
                 )}
                 {!project.github && !project.demo && (
                   <span className="text-gray-500 text-sm">
-                    {t('projects.internal')}
+                    {language === 'ko' ? '기업 내부 프로젝트' : 'Internal Enterprise Project'}
                   </span>
                 )}
               </div>

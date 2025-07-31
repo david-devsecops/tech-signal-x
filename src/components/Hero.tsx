@@ -1,5 +1,9 @@
 
+import { useLanguage } from '../contexts/LanguageContext'
+
 const Hero = () => {
+  const { language } = useLanguage()
+  
   return (
     <section className="pt-20 pb-16 bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,20 +17,27 @@ const Hero = () => {
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            안녕하세요, <span className="text-blue-600">박상준</span>입니다
+            {language === 'ko' ? (
+              <>안녕하세요, <span className="text-blue-600">박상준</span>입니다</>
+            ) : (
+              <>Hello, I'm <span className="text-blue-600">Sangjun Park</span></>
+            )}
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            12년 9개월의 클라우드 엔지니어 경험을 바탕으로<br />
-            AWS, GCP, Azure 등 멀티클라우드 아키텍처를 설계하고 구축합니다
+            {language === 'ko' ? (
+              <>12년 9개월의 클라우드 엔지니어 경험을 바탕으로<br />AWS, GCP, Azure 등 멀티클라우드 아키텍처를 설계하고 구축합니다</>
+            ) : (
+              <>With 12 years and 9 months of cloud engineering experience,<br />I design and build multi-cloud architectures using AWS, GCP, Azure, and more.</>
+            )}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#projects" className="btn-primary">
-              프로젝트 보기
+              {language === 'ko' ? '프로젝트 보기' : 'View Projects'}
             </a>
             <a href="#blog" className="btn-secondary">
-              블로그 읽기
+              {language === 'ko' ? '블로그 읽기' : 'Read Blog'}
             </a>
           </div>
           
