@@ -4,7 +4,7 @@ const Projects = () => {
     {
       title: '한국은행 CBDC 활용성 테스트',
       description: '중앙은행 디지털 화폐(CBDC) 활용성 테스트를 위한 인프라 설계 및 구축. 클라우드 아키텍처로 고가용성 및 보안성 달성',
-      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=200&fit=crop',
+      image: 'https://images.unsplash.com/photo-1621504450181-5d356f61d307?w=400&h=200&fit=crop',
       tech: [],
       github: '',
       demo: ''
