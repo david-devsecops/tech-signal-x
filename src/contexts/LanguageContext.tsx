@@ -1,7 +1,6 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useMemo, useCallback } from 'react'
 import type { ReactNode } from 'react'
-
-type Language = 'ko' | 'en'
+import type { Language } from '../types'
 
 interface LanguageContextType {
   language: Language
@@ -115,24 +114,35 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('ko') // 기본값: 한국어
 
-  const t = (key: string): string => {
+  const t = useCallback((key: string): string => {
     const keys = key.split('.')
-    let value: any = translations[language]
+    let value: unknown = translations[language]
     
     for (const k of keys) {
-      value = value?.[k]
+      if (value && typeof value === 'object' && k in value) {
+        value = (value as Record<string, unknown>)[k]
+      } else {
+        return key
+      }
     }
     
-    return value || key
-  }
+    return typeof value === 'string' ? value : key
+  }, [language])
+
+  const contextValue = useMemo(() => ({
+    language,
+    setLanguage,
+    t
+  }), [language, t])
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={contextValue}>
       {children}
     </LanguageContext.Provider>
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useLanguage() {
   const context = useContext(LanguageContext)
   if (context === undefined) {

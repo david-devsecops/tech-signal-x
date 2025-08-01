@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, memo, useCallback } from 'react'
 
-const Newsletter = () => {
+const Newsletter = memo(() => {
   const [email, setEmail] = useState('')
   const [isSubscribed, setIsSubscribed] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault()
     // 실제로는 이메일 서비스와 연동
     setIsSubscribed(true)
     setEmail('')
-  }
+  }, [])
 
   const recentNewsletters = [
     {
@@ -65,7 +65,7 @@ const Newsletter = () => {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4" aria-label="Newsletter subscription form">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     이메일 주소
@@ -78,12 +78,13 @@ const Newsletter = () => {
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     placeholder="your@email.com"
+                    aria-describedby="email-description"
                   />
                 </div>
-                <button type="submit" className="w-full btn-primary">
+                <button type="submit" className="w-full btn-primary" aria-label="Subscribe to newsletter">
                   구독하기
                 </button>
-                <p className="text-xs text-gray-500 text-center">
+                <p id="email-description" className="text-xs text-gray-500 text-center">
                   언제든지 구독을 해지할 수 있습니다. 개인정보는 안전하게 보호됩니다.
                 </p>
               </form>
@@ -111,7 +112,7 @@ const Newsletter = () => {
             </h3>
             <div className="space-y-6">
               {recentNewsletters.map((newsletter, index) => (
-                <div key={index} className="card hover:shadow-md transition-shadow cursor-pointer">
+                <article key={index} className="card hover:shadow-md transition-shadow cursor-pointer" role="article" tabIndex={0}>
                   <div className="flex justify-between items-start mb-2">
                     <h4 className="font-semibold text-gray-900">
                       {newsletter.title}
@@ -134,7 +135,7 @@ const Newsletter = () => {
                       읽어보기 →
                     </span>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
@@ -142,6 +143,8 @@ const Newsletter = () => {
       </div>
     </section>
   )
-}
+})
+
+Newsletter.displayName = 'Newsletter'
 
 export default Newsletter

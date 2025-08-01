@@ -123,7 +123,7 @@ const Blog = ({ onBlogClick }: BlogProps) => {
                   className="flex items-center text-blue-600 hover:text-blue-800"
                   onClick={(e) => {
                     e.stopPropagation()
-                    onBlogClick && onBlogClick(post.id)
+                    onBlogClick?.(post.id)
                   }}
                 >
                   더 읽기
