@@ -13,7 +13,7 @@ const About = () => {
 
   const experience = [
     {
-      company: language === 'ko' ? '엘퍼스트' : 'L First',
+      company: language === 'ko' ? '엘퍼스트' : 'Elfirst',
       role: language === 'ko' ? '클라우드 아키텍트' : 'Cloud Architect',
       description: language === 'ko' 
         ? '한국은행 CBDC 활용성 테스트 인프라 구축 (2024.08 ~ 2025.07)'
