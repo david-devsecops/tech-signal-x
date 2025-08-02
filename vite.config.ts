@@ -10,10 +10,22 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
-    port: 5173
+    port: 5173,
+    allowedHosts: [
+      'healthcheck.railway.app',
+      '.railway.app',
+      'localhost',
+      '127.0.0.1'
+    ]
   },
   preview: {
     host: '0.0.0.0',
-    port: 4173
+    port: 4173,
+    allowedHosts: [
+      'healthcheck.railway.app',
+      '.railway.app',
+      'localhost',
+      '127.0.0.1'
+    ]
   }
 })
