@@ -53,6 +53,17 @@ app.get('/health', (req, res) => {
   })
 })
 
+// Debug endpoint for environment variables
+app.get('/debug/env', (req, res) => {
+  res.json({
+    NODE_ENV: process.env.NODE_ENV,
+    DATABASE_URL: process.env.DATABASE_URL ? 'SET' : 'NOT SET',
+    PORT: process.env.PORT,
+    FRONTEND_URL: process.env.FRONTEND_URL,
+    JWT_SECRET: process.env.JWT_SECRET ? 'SET' : 'NOT SET'
+  })
+})
+
 // API Routes
 app.use('/api/auth', authRoutes)
 app.use('/api/blog', blogRoutes) // /api/blog/posts, /api/blog/categories, /api/blog/tags 등
