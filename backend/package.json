@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/app.js",
-    "start": "node simple.js",
+    "start": "node minimal.js",
     "build": "echo 'Build completed'",
     "postinstall": "echo 'Install completed'",
     "db:generate": "prisma generate",
