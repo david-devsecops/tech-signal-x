@@ -55,7 +55,7 @@ app.get('/health', (req, res) => {
 
 // API Routes
 app.use('/api/auth', authRoutes)
-app.use('/api', blogRoutes) // /api/posts, /api/categories, /api/tags 등
+app.use('/api/blog', blogRoutes) // /api/blog/posts, /api/blog/categories, /api/blog/tags 등
 app.use('/api/user', userRoutes)
 
 // Error handling middleware
