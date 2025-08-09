@@ -9,3 +9,9 @@ cmd = "npm start"
 
 [variables]
 NODE_ENV = "production"
+JWT_SECRET = "your-super-secret-jwt-key-railway-production"
+JWT_EXPIRES_IN = "7d"
+FRONTEND_URL = "https://tech-portfolio-blog.railway.app"
+UPLOAD_DIR = "uploads"
+MAX_FILE_SIZE = "5242880"
+ALLOWED_EXTENSIONS = "jpg,jpeg,png,webp,gif"

@@ -18,9 +18,30 @@ const __dirname = path.dirname(__filename)
 
 dotenv.config()
 
+// Log environment for debugging
+console.log('🔍 Environment check:')
+console.log('NODE_ENV:', process.env.NODE_ENV)
+console.log('DATABASE_URL:', process.env.DATABASE_URL ? 'SET' : 'NOT SET')
+console.log('PORT:', process.env.PORT)
+
 const app = express()
 const prisma = new PrismaClient()
 const PORT = process.env.PORT || 3001
+
+// Test database connection on startup
+async function testDatabaseConnection() {
+  try {
+    await prisma.$connect()
+    console.log('✅ Database connected successfully')
+    
+    const postCount = await prisma.blogPost.count()
+    console.log(`📊 Found ${postCount} blog posts in database`)
+  } catch (error) {
+    console.error('❌ Database connection failed:', error.message)
+  }
+}
+
+testDatabaseConnection()
 
 // Rate limiting
 const limiter = rateLimit({
