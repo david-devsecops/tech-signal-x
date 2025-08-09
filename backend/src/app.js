@@ -25,11 +25,28 @@ console.log('DATABASE_URL:', process.env.DATABASE_URL ? 'SET' : 'NOT SET')
 console.log('PORT:', process.env.PORT)
 
 const app = express()
-const prisma = new PrismaClient()
 const PORT = process.env.PORT || 3001
+
+// Initialize Prisma client safely
+let prisma = null
+try {
+  if (process.env.DATABASE_URL) {
+    prisma = new PrismaClient()
+    console.log('🔄 Prisma client initialized')
+  } else {
+    console.error('❌ DATABASE_URL not found - running without database')
+  }
+} catch (error) {
+  console.error('❌ Failed to initialize Prisma:', error.message)
+}
 
 // Test database connection on startup
 async function testDatabaseConnection() {
+  if (!prisma) {
+    console.error('❌ No Prisma client - skipping database test')
+    return
+  }
+  
   try {
     await prisma.$connect()
     console.log('✅ Database connected successfully')
@@ -38,6 +55,7 @@ async function testDatabaseConnection() {
     console.log(`📊 Found ${postCount} blog posts in database`)
   } catch (error) {
     console.error('❌ Database connection failed:', error.message)
+    // Don't crash the server, just log the error
   }
 }
 

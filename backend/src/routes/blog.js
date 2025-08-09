@@ -6,7 +6,18 @@ import { authenticateToken, optionalAuth, requireRole } from '../middleware/auth
 import { upload, processImage } from '../middleware/upload.js'
 
 const router = express.Router()
-const prisma = new PrismaClient()
+
+// Initialize Prisma client safely
+let prisma = null
+try {
+  if (process.env.DATABASE_URL) {
+    prisma = new PrismaClient()
+  } else {
+    console.error('❌ DATABASE_URL not found in blog router')
+  }
+} catch (error) {
+  console.error('❌ Failed to initialize Prisma in blog router:', error.message)
+}
 
 // Test route for debugging
 router.get('/test', (req, res) => {
@@ -20,6 +31,14 @@ router.get('/test', (req, res) => {
 // Database connection test
 router.get('/db-test', async (req, res) => {
   try {
+    if (!prisma) {
+      return res.status(503).json({
+        success: false,
+        error: 'Database not available - Prisma client not initialized',
+        timestamp: new Date().toISOString()
+      })
+    }
+    
     const postCount = await prisma.blogPost.count()
     res.json({
       success: true,
