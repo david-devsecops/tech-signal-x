@@ -8,6 +8,34 @@ import { upload, processImage } from '../middleware/upload.js'
 const router = express.Router()
 const prisma = new PrismaClient()
 
+// Test route for debugging
+router.get('/test', (req, res) => {
+  res.json({ 
+    success: true, 
+    message: 'Blog router is working',
+    timestamp: new Date().toISOString()
+  })
+})
+
+// Database connection test
+router.get('/db-test', async (req, res) => {
+  try {
+    const postCount = await prisma.blogPost.count()
+    res.json({
+      success: true,
+      message: 'Database connection working',
+      postCount,
+      timestamp: new Date().toISOString()
+    })
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    })
+  }
+})
+
 // Validation schemas
 const createPostSchema = z.object({
   title: z.string().min(1, 'Title is required').max(200, 'Title too long'),
