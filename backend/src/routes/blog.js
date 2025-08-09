@@ -9,15 +9,8 @@ const router = express.Router()
 
 // Initialize Prisma client safely
 let prisma = null
-try {
-  if (process.env.DATABASE_URL) {
-    prisma = new PrismaClient()
-  } else {
-    console.error('❌ DATABASE_URL not found in blog router')
-  }
-} catch (error) {
-  console.error('❌ Failed to initialize Prisma in blog router:', error.message)
-}
+// Skip Prisma initialization for now
+console.log('🔄 Blog router: Skipping Prisma initialization')
 
 // Test route for debugging
 router.get('/test', (req, res) => {
