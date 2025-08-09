@@ -15,75 +15,7 @@ const BlogList = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [searchTerm, setSearchTerm] = useState('')
 
-  // 기존 하드코딩된 포스트들 (임시로 보여주기 위함)
-  const staticPosts: BlogPost[] = [
-    {
-      id: 'aws-migration-strategy',
-      title: language === 'ko' ? 'On-Premise에서 AWS로의 대규모 마이그레이션 전략' : 'Large-scale Migration Strategy from On-Premise to AWS',
-      slug: 'aws-migration-strategy',
-      excerpt: language === 'ko' 
-        ? '아모레퍼시픽 프로젝트를 통해 배운 대규모 엔터프라이즈의 AWS 마이그레이션 경험과 전략을 공유합니다.'
-        : 'Sharing large-scale enterprise AWS migration experience and strategies learned through the Amorepacific project.',
-      content: '',
-      coverImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=200&fit=crop',
-      published: true,
-      featured: true,
-      viewCount: 1240,
-      likeCount: 89,
-      createdAt: '2024-01-15T09:00:00Z',
-      updatedAt: '2024-01-15T09:00:00Z',
-      publishedAt: '2024-01-15T09:00:00Z',
-      authorId: 'static-author',
-      author: { id: 'static-author', name: '박상준', username: 'david-devsecops' },
-      categoryId: 'aws',
-      category: { id: 'aws', name: 'AWS', slug: 'aws', color: '#FF9900' },
-      tags: [{ id: 'aws-1', name: 'AWS', slug: 'aws', color: '#FF9900' }]
-    },
-    {
-      id: 'oracle-zdlra-architecture',
-      title: language === 'ko' ? 'Oracle ZDLRA 구축과 운영 노하우' : 'Oracle ZDLRA Construction and Operation Know-how',
-      slug: 'oracle-zdlra-architecture',
-      excerpt: language === 'ko'
-        ? '국민연금, KB카드 등 대형 금융기관에서 Oracle Zero Data Loss Recovery Appliance를 구축하고 운영한 경험을 나눕니다.'
-        : 'Sharing experience in constructing and operating Oracle Zero Data Loss Recovery Appliance at major financial institutions including National Pension Service and KB Card.',
-      content: '',
-      coverImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=200&fit=crop',
-      published: true,
-      featured: false,
-      viewCount: 856,
-      likeCount: 43,
-      createdAt: '2024-01-10T09:00:00Z',
-      updatedAt: '2024-01-10T09:00:00Z',
-      publishedAt: '2024-01-10T09:00:00Z',
-      authorId: 'static-author',
-      author: { id: 'static-author', name: '박상준', username: 'david-devsecops' },
-      categoryId: 'oracle',
-      category: { id: 'oracle', name: 'Oracle', slug: 'oracle', color: '#F80000' },
-      tags: [{ id: 'oracle-1', name: 'Oracle', slug: 'oracle', color: '#F80000' }]
-    },
-    {
-      id: 'kubernetes-production-guide',
-      title: language === 'ko' ? '프로덕션 Kubernetes 클러스터 운영 가이드' : 'Production Kubernetes Cluster Operation Guide',
-      slug: 'kubernetes-production-guide',
-      excerpt: language === 'ko'
-        ? 'SKT T-deal, 메타버스 플랫폼 등에서 Kubernetes를 운영하며 얻은 실전 경험과 모니터링, 로깅 전략을 소개합니다.'
-        : 'Introducing practical experience and monitoring, logging strategies gained from operating Kubernetes in SKT T-deal and metaverse platforms.',
-      content: '',
-      coverImage: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=400&h=200&fit=crop',
-      published: true,
-      featured: false,
-      viewCount: 723,
-      likeCount: 67,
-      createdAt: '2024-01-05T09:00:00Z',
-      updatedAt: '2024-01-05T09:00:00Z',
-      publishedAt: '2024-01-05T09:00:00Z',
-      authorId: 'static-author',
-      author: { id: 'static-author', name: '박상준', username: 'david-devsecops' },
-      categoryId: 'kubernetes',
-      category: { id: 'kubernetes', name: 'Kubernetes', slug: 'kubernetes', color: '#326CE5' },
-      tags: [{ id: 'k8s-1', name: 'Kubernetes', slug: 'kubernetes', color: '#326CE5' }]
-    }
-  ]
+  // 정적 포스트 데이터 제거 - 실제 API에서만 데이터 가져오기
 
   const categories = [
     { id: 'all', name: language === 'ko' ? '전체' : 'All', slug: 'all' },
@@ -104,50 +36,27 @@ const BlogList = () => {
     try {
       actions.setLoading(true)
       
-      // 실제 API에서 데이터를 가져오는 시도
-      try {
-        const result = await blogApi.getPosts({
-          page: 1,
-          limit: 10,
-          category: selectedCategory === 'all' ? undefined : selectedCategory,
-          published: true,
-          search: searchTerm || undefined
-        })
-        
-        // API 데이터와 정적 데이터를 결합
-        const combinedPosts = [...result.posts, ...staticPosts]
-        actions.setPosts(combinedPosts, result.pagination)
-      } catch (error) {
-        // API 실패 시 정적 데이터만 표시
-        console.warn('API not available, showing static data:', error)
-        
-        // 카테고리 필터링
-        let filteredPosts = staticPosts
-        if (selectedCategory !== 'all') {
-          filteredPosts = staticPosts.filter(post => 
-            post.category?.slug === selectedCategory
-          )
-        }
-        
-        // 검색 필터링
-        if (searchTerm) {
-          filteredPosts = filteredPosts.filter(post =>
-            post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            post.excerpt?.toLowerCase().includes(searchTerm.toLowerCase())
-          )
-        }
-        
-        actions.setPosts(filteredPosts, {
-          page: 1,
-          limit: 10,
-          total: filteredPosts.length,
-          totalPages: 1
-        })
-      }
+      // 실제 API에서 데이터 가져오기
+      const result = await blogApi.getPosts({
+        page: 1,
+        limit: 10,
+        category: selectedCategory === 'all' ? undefined : selectedCategory,
+        published: true,
+        search: searchTerm || undefined
+      })
+      
+      actions.setPosts(result.posts, result.pagination)
     } catch (error) {
       console.error('Failed to load posts:', error)
       toast.error(language === 'ko' ? '포스트를 불러오는데 실패했습니다.' : 'Failed to load posts')
       actions.setError('Failed to load posts')
+      // API 실패 시 빈 배열로 설정
+      actions.setPosts([], {
+        page: 1,
+        limit: 10,
+        total: 0,
+        totalPages: 0
+      })
     } finally {
       actions.setLoading(false)
     }

@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -17,7 +17,7 @@ model User {
   name      String?
   avatar    String?
   bio       String?
-  role      UserRole @default(USER)
+  role      String   @default("USER")
   
   // Auth fields
   password  String
@@ -35,18 +35,15 @@ model User {
   @@map("users")
 }
 
-enum UserRole {
-  USER
-  ADMIN
-  EDITOR
-}
+// UserRole enum removed for SQLite compatibility
+// Possible values: USER, ADMIN, EDITOR
 
 model BlogPost {
   id          String   @id @default(cuid())
   title       String
   slug        String   @unique
   excerpt     String?
-  content     String   @db.Text  // PostgreSQL에서 긴 텍스트 지원
+  content     String   // 긴 텍스트 지원
   coverImage  String?
   published   Boolean  @default(false)
   featured    Boolean  @default(false)
