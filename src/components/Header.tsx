@@ -1,5 +1,6 @@
 
 import { useState, memo, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 import { ARIA_LABELS } from '../constants'
 
@@ -25,10 +26,11 @@ const Header = memo(() => {
           
           <nav className="hidden md:block" role="navigation" aria-label={ARIA_LABELS.navigation.main}>
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#about" className="nav-link" aria-label="Go to About section">About</a>
-              <a href="#projects" className="nav-link" aria-label="Go to Projects section">Projects</a>
-              <a href="#blog" className="nav-link" aria-label="Go to Blog section">Blog</a>
-              <a href="#newsletter" className="nav-link" aria-label="Go to Newsletter section">Newsletter</a>
+              <Link to="/" className="nav-link" aria-label="Go to Home page">Home</Link>
+              <a href="/#about" className="nav-link" aria-label="Go to About section">About</a>
+              <a href="/#projects" className="nav-link" aria-label="Go to Projects section">Projects</a>
+              <Link to="/blog" className="nav-link" aria-label="Go to Blog page">Blog</Link>
+              <a href="/#newsletter" className="nav-link" aria-label="Go to Newsletter section">Newsletter</a>
             </div>
           </nav>
           
@@ -75,8 +77,16 @@ const Header = memo(() => {
             aria-label="Mobile navigation"
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
+              <Link 
+                to="/" 
+                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors"
+                onClick={closeMobileMenu}
+                aria-label="Go to Home page"
+              >
+                Home
+              </Link>
               <a 
-                href="#about" 
+                href="/#about" 
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors"
                 onClick={closeMobileMenu}
                 aria-label="Go to About section"
@@ -84,23 +94,23 @@ const Header = memo(() => {
                 About
               </a>
               <a 
-                href="#projects" 
+                href="/#projects" 
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors"
                 onClick={closeMobileMenu}
                 aria-label="Go to Projects section"
               >
                 Projects
               </a>
-              <a 
-                href="#blog" 
+              <Link 
+                to="/blog" 
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors"
                 onClick={closeMobileMenu}
-                aria-label="Go to Blog section"
+                aria-label="Go to Blog page"
               >
                 Blog
-              </a>
+              </Link>
               <a 
-                href="#newsletter" 
+                href="/#newsletter" 
                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors"
                 onClick={closeMobileMenu}
                 aria-label="Go to Newsletter section"

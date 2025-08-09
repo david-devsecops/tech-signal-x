@@ -35,4 +35,47 @@
   .section-title {
     @apply text-3xl font-bold text-gray-900 mb-8;
   }
+  
+  /* 마크다운 에디터 스타일링 */
+  .w-md-editor {
+    @apply !bg-white;
+  }
+  
+  .w-md-editor-text-container,
+  .w-md-editor-text {
+    @apply !bg-white !text-gray-900;
+    font-size: 14px !important;
+  }
+  
+  .w-md-editor-text-container .w-md-editor-text {
+    @apply !border-r !border-gray-200;
+  }
+  
+  .w-md-editor-preview {
+    @apply !bg-gray-50 !text-gray-900;
+    font-size: 14px !important;
+  }
+  
+  .w-md-editor-toolbar {
+    @apply !bg-gray-50 !border-b !border-gray-200;
+  }
+  
+  .w-md-editor-toolbar li button {
+    @apply !text-gray-600 hover:!text-gray-900 hover:!bg-gray-100;
+  }
+  
+  /* 블로그 카드 호버 효과 */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }

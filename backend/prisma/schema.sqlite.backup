@@ -1,13 +1,13 @@
-// PostgreSQL용 Prisma schema
-// Railway 배포용 설정
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 model User {
@@ -17,7 +17,7 @@ model User {
   name      String?
   avatar    String?
   bio       String?
-  role      UserRole @default(USER)
+  role      String   @default("USER")
   
   // Auth fields
   password  String
@@ -35,18 +35,12 @@ model User {
   @@map("users")
 }
 
-enum UserRole {
-  USER
-  ADMIN
-  EDITOR
-}
-
 model BlogPost {
   id          String   @id @default(cuid())
   title       String
   slug        String   @unique
   excerpt     String?
-  content     String   @db.Text  // PostgreSQL에서 긴 텍스트 지원
+  content     String
   coverImage  String?
   published   Boolean  @default(false)
   featured    Boolean  @default(false)
@@ -74,10 +68,6 @@ model BlogPost {
   likes       Like[]
   
   @@map("blog_posts")
-  @@index([published])
-  @@index([authorId])
-  @@index([categoryId])
-  @@index([slug])
 }
 
 model Category {
@@ -141,8 +131,6 @@ model Comment {
   replies   Comment[] @relation("CommentReplies")
   
   @@map("comments")
-  @@index([postId])
-  @@index([authorId])
 }
 
 model Like {
@@ -170,3 +158,6 @@ model Newsletter {
   
   @@map("newsletter")
 }
+
+// UserRole enum replaced with String for SQLite compatibility
+// Allowed values: USER, ADMIN, EDITOR

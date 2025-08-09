@@ -7,9 +7,14 @@ import { PrismaClient } from '@prisma/client'
 import dotenv from 'dotenv'
 
 // Import routes
+import path from 'path'
+import { fileURLToPath } from 'url'
 import authRoutes from './routes/auth.js'
 import blogRoutes from './routes/blog.js'
 import userRoutes from './routes/user.js'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 dotenv.config()
 
@@ -35,6 +40,10 @@ app.use(limiter)
 app.use(express.json({ limit: '10mb' }))
 app.use(express.urlencoded({ extended: true }))
 
+// 업로드된 파일 정적 서빙
+const uploadsPath = path.join(__dirname, '../uploads')
+app.use('/uploads', express.static(uploadsPath))
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({ 
@@ -46,7 +55,7 @@ app.get('/health', (req, res) => {
 
 // API Routes
 app.use('/api/auth', authRoutes)
-app.use('/api/blog', blogRoutes)
+app.use('/api', blogRoutes) // /api/posts, /api/categories, /api/tags 등
 app.use('/api/user', userRoutes)
 
 // Error handling middleware
