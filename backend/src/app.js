@@ -18,10 +18,17 @@ const __dirname = path.dirname(__filename)
 
 dotenv.config()
 
+// Railway DATABASE_PUBLIC_URL 변환 처리
+if (!process.env.DATABASE_URL && process.env.DATABASE_PUBLIC_URL) {
+  process.env.DATABASE_URL = process.env.DATABASE_PUBLIC_URL
+  console.log('🔄 Using DATABASE_PUBLIC_URL as DATABASE_URL')
+}
+
 // Log environment for debugging
 console.log('🔍 Environment check:')
 console.log('NODE_ENV:', process.env.NODE_ENV)
 console.log('DATABASE_URL:', process.env.DATABASE_URL ? 'SET' : 'NOT SET')
+console.log('DATABASE_PUBLIC_URL:', process.env.DATABASE_PUBLIC_URL ? 'SET' : 'NOT SET')
 console.log('PORT:', process.env.PORT)
 
 const app = express()
@@ -97,9 +104,11 @@ app.get('/debug/env', (req, res) => {
   res.json({
     NODE_ENV: process.env.NODE_ENV,
     DATABASE_URL: process.env.DATABASE_URL ? 'SET' : 'NOT SET',
+    DATABASE_PUBLIC_URL: process.env.DATABASE_PUBLIC_URL ? 'SET' : 'NOT SET',
     PORT: process.env.PORT,
     FRONTEND_URL: process.env.FRONTEND_URL,
-    JWT_SECRET: process.env.JWT_SECRET ? 'SET' : 'NOT SET'
+    JWT_SECRET: process.env.JWT_SECRET ? 'SET' : 'NOT SET',
+    PRISMA_CLIENT: prisma ? 'INITIALIZED' : 'NOT_INITIALIZED'
   })
 })
 
@@ -135,9 +144,12 @@ process.on('SIGINT', async () => {
   process.exit(0)
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running on port ${PORT}`)
   console.log(`📊 Health check: http://localhost:${PORT}/health`)
+  console.log(`🌐 Environment: ${process.env.NODE_ENV}`)
+  console.log(`💾 Database: ${process.env.DATABASE_URL ? 'Connected' : 'Not connected'}`)
+  console.log(`🔧 Prisma: ${prisma ? 'Initialized' : 'Not initialized'}`)
 })
 
 export default app
