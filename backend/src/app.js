@@ -9,9 +9,10 @@ import dotenv from 'dotenv'
 // Import routes
 import path from 'path'
 import { fileURLToPath } from 'url'
-import authRoutes from './routes/auth.js'
-import blogRoutes from './routes/blog.js'
-import userRoutes from './routes/user.js'
+// Temporarily disable route imports to test
+// import authRoutes from './routes/auth.js'
+// import blogRoutes from './routes/blog.js'
+// import userRoutes from './routes/user.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -104,10 +105,27 @@ app.get('/debug/env', (req, res) => {
   })
 })
 
-// API Routes
-app.use('/api/auth', authRoutes)
-app.use('/api/blog', blogRoutes) // /api/blog/posts, /api/blog/categories, /api/blog/tags 등
-app.use('/api/user', userRoutes)
+// Temporary test routes
+app.get('/api/test', (req, res) => {
+  res.json({ 
+    success: true, 
+    message: 'API working',
+    timestamp: new Date().toISOString()
+  })
+})
+
+app.get('/api/blog/test', (req, res) => {
+  res.json({ 
+    success: true, 
+    message: 'Blog API working',
+    timestamp: new Date().toISOString()
+  })
+})
+
+// API Routes - temporarily disabled
+// app.use('/api/auth', authRoutes)
+// app.use('/api/blog', blogRoutes)
+// app.use('/api/user', userRoutes)
 
 // Error handling middleware
 app.use((err, req, res, next) => {
