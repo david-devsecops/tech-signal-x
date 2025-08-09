@@ -2,7 +2,7 @@
 nixPkgs = ["nodejs", "npm"]
 
 [phases.build]
-cmds = ["npm ci", "npx prisma generate"]
+cmds = ["npm ci"]
 
 [phases.start]
 cmd = "npm start"
