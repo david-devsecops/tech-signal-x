@@ -7,23 +7,36 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "cross-env ANALYZE=true next build",
+    "type-check": "tsc --noEmit"
   },
-  "keywords": ["blog", "tech", "nextjs", "vercel"],
+  "keywords": [
+    "blog",
+    "tech",
+    "nextjs",
+    "vercel"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@vercel/postgres": "^0.5.0",
     "next": "^14.0.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "@vercel/postgres": "^0.5.0"
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.2.31",
+    "@tailwindcss/postcss": "^4.1.11",
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "autoprefixer": "^10.4.21",
+    "cross-env": "^7.0.3",
     "eslint": "^8.0.0",
     "eslint-config-next": "^14.0.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
     "typescript": "^5.0.0"
   }
 }
