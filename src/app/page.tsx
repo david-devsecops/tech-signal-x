@@ -44,15 +44,18 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-20 pb-16 bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-20 pb-20 hero-gradient min-h-[80vh] flex items-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 
           <div className="text-center">
-            <div className="mb-8">
-              <div className="w-24 h-24 mx-auto bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg">
-                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
+            <div className="mb-10">
+              <div className="relative w-32 h-32 mx-auto">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-600 rounded-full animate-pulse-glow"></div>
+                <div className="relative w-full h-full bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-600 rounded-full flex items-center justify-center shadow-2xl">
+                  <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
               </div>
             </div>
             
@@ -66,21 +69,22 @@ export default function Home() {
               <span className="text-indigo-600 font-semibold">엔터프라이즈 클라우드 아키텍처</span> 전문가입니다
             </p>
 
-            {/* Simplified Metrics */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
+            {/* Enhanced Metrics */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-16">
               {metrics.map((metric) => (
-                <div key={metric.label} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 text-center">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">{metric.value}</div>
-                  <div className="font-korean text-gray-600 text-sm">{metric.label}</div>
+                <div key={metric.label} className="metric-card-enhanced rounded-xl p-6 text-center hover:scale-105 transition-all duration-300">
+                  <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-3">{metric.value}</div>
+                  <div className="font-korean text-gray-700 text-sm font-medium">{metric.label}</div>
                 </div>
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#projects" className="bg-blue-600 hover:bg-blue-700 text-white font-korean font-medium py-3 px-6 rounded-lg transition-colors korean-text-balance">
-                프로젝트 보기
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <a href="#projects" className="group relative bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-korean font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 korean-text-balance">
+                <span className="relative z-10">프로젝트 보기</span>
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-700 to-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </a>
-              <a href="#contact" className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-korean font-medium py-3 px-6 rounded-lg transition-colors korean-text-balance">
+              <a href="#contact" className="group relative bg-white border-2 border-gray-200 hover:border-blue-300 text-gray-700 hover:text-blue-600 font-korean font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg korean-text-balance">
                 연락하기
               </a>
             </div>
@@ -120,19 +124,33 @@ export default function Home() {
           </div>
 
           <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h3 className="font-korean text-korean-2xl font-bold text-gray-900 mb-6 korean-subtitle">기술 스택</h3>
+            <div className="premium-card rounded-xl p-8">
+              <div className="flex items-center mb-6">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mr-3">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                </div>
+                <h3 className="font-korean text-korean-2xl font-bold text-gray-900 korean-subtitle">기술 스택</h3>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {['AWS', 'Azure', 'GCP', 'Oracle Cloud', 'Kubernetes', 'Docker', 'Terraform', 'Jenkins', 'Linux', 'Unix', 'Nginx', 'GitLab CI/CD', 'Oracle Database', 'PostgreSQL', 'MongoDB', 'Redis', 'Python', 'Bash'].map((skill, index) => (
-                  <span key={index} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium korean-text-balance">
+                  <span key={index} className="px-3 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 rounded-lg text-sm font-medium korean-text-balance border border-blue-100 hover:from-blue-100 hover:to-indigo-100 transition-colors duration-200">
                     {skill}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h3 className="font-korean text-korean-2xl font-bold text-gray-900 mb-6 korean-subtitle">경력 하이라이트</h3>
+            <div className="premium-card rounded-xl p-8">
+              <div className="flex items-center mb-6">
+                <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center mr-3">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  </svg>
+                </div>
+                <h3 className="font-korean text-korean-2xl font-bold text-gray-900 korean-subtitle">경력 하이라이트</h3>
+              </div>
               <div className="space-y-4">
                 {careerHighlights.map((career, index) => (
                   <div key={index} className="border-l-4 border-blue-500 pl-4">
@@ -154,18 +172,28 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h3 className="font-korean text-korean-2xl font-bold text-gray-900 mb-6 korean-subtitle">핵심 전문 영역</h3>
-              <div className="space-y-4">
+            <div className="premium-card rounded-xl p-8">
+              <div className="flex items-center mb-6">
+                <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mr-3">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
+                </div>
+                <h3 className="font-korean text-korean-2xl font-bold text-gray-900 korean-subtitle">핵심 전문 영역</h3>
+              </div>
+              <div className="space-y-5">
                 {coreSkills.map((skill) => (
-                  <div key={skill.area} className="space-y-2">
+                  <div key={skill.area} className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="font-korean font-medium text-gray-900 text-sm korean-text-balance">{skill.area}</span>
-                      <span className="text-blue-600 font-semibold text-sm">{skill.level}%</span>
+                      <div className="flex items-center">
+                        <span className="text-lg mr-2">{skill.icon}</span>
+                        <span className="font-korean font-semibold text-gray-900 text-sm korean-text-balance">{skill.area}</span>
+                      </div>
+                      <span className="text-indigo-600 font-bold text-sm bg-indigo-50 px-2 py-1 rounded-lg">{skill.level}%</span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="w-full bg-gradient-to-r from-gray-100 to-gray-200 rounded-full h-3 shadow-inner">
                       <div 
-                        className="bg-blue-600 h-2 rounded-full transition-all duration-1000 ease-out"
+                        className="bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full transition-all duration-1000 ease-out shadow-sm"
                         style={{ width: `${skill.level}%` }}
                       />
                     </div>
