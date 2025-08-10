@@ -14,10 +14,10 @@ const MetricCard = memo(({ metric, isActive }: MetricCardProps) => {
         isActive ? 'animate-pulse-glow scale-105' : ''
       }`}
     >
-      <div className={`text-3xl font-bold mb-2 ${metric.color}`}>
+      <div className={`font-korean-display text-korean-3xl font-bold mb-2 ${metric.color}`}>
         {metric.value}
       </div>
-      <div className="text-slate-400 text-sm font-medium">
+      <div className="font-korean text-slate-400 text-korean-sm font-medium korean-text-balance">
         {metric.label}
       </div>
     </div>

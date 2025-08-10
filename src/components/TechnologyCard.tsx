@@ -15,15 +15,15 @@ const TechnologyCard = memo(({ tech, index }: TechnologyCardProps) => {
       <div className="flex items-start space-x-4 mb-6">
         <div className="text-4xl">{tech.icon}</div>
         <div className="flex-1">
-          <h3 className="text-2xl font-bold text-white mb-2">{tech.name}</h3>
-          <p className="text-slate-300 text-sm">{tech.description}</p>
+          <h3 className="font-korean text-korean-2xl font-bold text-white mb-2 korean-subtitle mixed-content">{tech.name}</h3>
+          <p className="font-korean-body text-slate-300 text-korean-sm korean-text-balance">{tech.description}</p>
         </div>
       </div>
 
       <div className="mb-4">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-slate-400 font-medium">숙련도</span>
-          <span className="text-gradient-primary font-bold text-lg">{tech.level}%</span>
+          <span className="font-korean text-slate-400 font-medium korean-text-balance">숙련도</span>
+          <span className="font-korean text-gradient-primary font-bold text-korean-lg">{tech.level}%</span>
         </div>
         <div className="progress-bar">
           <div
@@ -39,7 +39,7 @@ const TechnologyCard = memo(({ tech, index }: TechnologyCardProps) => {
       <div className="pt-4 border-t border-slate-700">
         <div className="flex items-center space-x-2 text-sm text-slate-400">
           <span>🏆</span>
-          <span>Production Ready</span>
+          <span className="font-korean korean-text-balance mixed-content">Production Ready</span>
         </div>
       </div>
     </div>
