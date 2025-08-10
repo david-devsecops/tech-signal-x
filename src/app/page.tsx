@@ -7,7 +7,8 @@ import {
   cloudTechnologies, 
   architectureProjects, 
   certifications, 
-  coreSkills 
+  coreSkills,
+  careerHighlights 
 } from '@/data/profile'
 
 export default function Home() {
@@ -60,8 +61,9 @@ export default function Home() {
             </h1>
             
             <p className="font-korean-body text-korean-xl md:text-korean-2xl text-gray-600 mb-8 max-w-3xl mx-auto korean-paragraph">
-              {PROFILE.experience}의 클라우드 엔지니어 경험을 바탕으로<br />
-              AWS, GCP, Azure 등 멀티클라우드 아키텍처를 설계하고 구축합니다
+              <span className="text-blue-600 font-semibold">{PROFILE.experience}</span> 경력의 시니어 클라우드 엔지니어로서<br />
+              <span className="text-orange-600 font-semibold">한국은행 CBDC</span> 프로젝트를 리드하며 
+              <span className="text-indigo-600 font-semibold">엔터프라이즈 클라우드 아키텍처</span> 전문가입니다
             </p>
 
             {/* Simplified Metrics */}
@@ -130,15 +132,20 @@ export default function Home() {
             </div>
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h3 className="font-korean text-korean-2xl font-bold text-gray-900 mb-6 korean-subtitle">현재 진행 프로젝트</h3>
+              <h3 className="font-korean text-korean-2xl font-bold text-gray-900 mb-6 korean-subtitle">경력 하이라이트</h3>
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-500 pl-4">
-                  <h4 className="font-korean font-semibold text-gray-900 text-sm korean-subtitle">클라우드 아키텍트</h4>
-                  <p className="text-blue-600 font-medium text-sm">엘퍼스트</p>
-                  <p className="text-xs text-gray-500 mb-1">2024.08 ~ 현재</p>
-                  <p className="text-gray-600 text-xs korean-text-balance">한국은행 CBDC 활용성 테스트 인프라 구축</p>
-                </div>
-                <div className="border-l-4 border-purple-500 pl-4">
+                {careerHighlights.map((career, index) => (
+                  <div key={index} className="border-l-4 border-blue-500 pl-4">
+                    <h4 className="font-korean font-semibold text-gray-900 text-sm korean-subtitle">{career.position}</h4>
+                    <p className="text-blue-600 font-medium text-sm">{career.company}</p>
+                    <p className="text-xs text-gray-500 mb-1">{career.period}</p>
+                    <div className="flex justify-between items-center">
+                      <p className="text-gray-600 text-xs korean-text-balance">{career.description}</p>
+                      <span className="text-orange-600 font-semibold text-xs">{career.salary}</span>
+                    </div>
+                  </div>
+                ))}
+                <div className="border-l-4 border-purple-500 pl-4 mt-4">
                   <h4 className="font-korean font-semibold text-gray-900 text-sm korean-subtitle">AI빅데이터학과 석사과정</h4>
                   <p className="text-purple-600 font-medium text-sm">서울과학종합대학원대학교</p>
                   <p className="text-xs text-gray-500 mb-1">2024.03 ~ 2025.06</p>
